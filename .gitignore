@@ -1,0 +1,12 @@
+# Segredos - NUNCA versionar
+.env
+infra/.env
+*.pem
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Docker
+db_data/
