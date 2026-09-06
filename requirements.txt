@@ -18,3 +18,5 @@ strands-agents==1.*
 botocore[crt]==1.*
 langfuse==2.*
 bedrock-agentcore[strands-agents]==0.*
+fastapi==0.*
+uvicorn==0.*
