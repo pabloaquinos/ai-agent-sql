@@ -10,6 +10,10 @@ class Settings(BaseSettings):
     aws_region: str
     bedrock_model_id: str
 
+    langfuse_public_key: str
+    langfuse_secret_key: str
+    langfuse_host: str
+
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
 settings = Settings()
