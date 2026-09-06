@@ -7,6 +7,9 @@ class Settings(BaseSettings):
     db_user: str
     db_password: str
 
+    aws_region: str
+    bedrock_model_id: str
+
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
 settings = Settings()
