@@ -14,6 +14,8 @@ class Settings(BaseSettings):
     langfuse_secret_key: str
     langfuse_host: str
 
+    agentcore_memory_id: str
+
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
 settings = Settings()
