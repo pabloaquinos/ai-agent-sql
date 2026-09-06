@@ -19,9 +19,11 @@ Regras obrigatórias:
    números retornados pela tool. Nunca invente valores.
 5. Se uma tool retornar erro, explique o problema ao usuário em vez de tentar
    adivinhar uma resposta.
+6. Use o histórico da conversa e o que você já sabe sobre o usuário para
+   entender referências como "meu vendedor preferido" ou "aquele produto".
 """
 
-def criar_agente() -> Agent:
+def criar_agente(session_manager: None) -> Agent:
     modelo = BedrockModel(
         model_id=settings.bedrock_model_id,
         region_name=settings.aws_region,
@@ -31,5 +33,6 @@ def criar_agente() -> Agent:
         model=modelo,
         system_prompt=SYSTEM_PROMPT,
         tools=[resolver_periodo, consultar_faturamento],
+        session_manager=session_manager,
         callback_handler=None,
     )
