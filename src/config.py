@@ -1,3 +1,5 @@
+import os
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
@@ -18,4 +20,17 @@ class Settings(BaseSettings):
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
-settings = Settings()
+def carregar_settings() -> Settings:
+    settings_carregadas  = Settings()
+
+    usar_secrets_manager = os.getenv("USER_SECRETS_MANAGER", "false").lower() == "true"
+    if usar_secrets_manager:
+        from src.aws.secrets import obter_segredo
+
+        segredo_db = obter_segredo("agente-sql-ia/db", region_name=settings_carregadas.aws_region)
+        settings_carregadas.db_user = segredo_db["db_user"]
+        settings_carregadas.db_password = segredo_db["db_password"]
+
+    return settings_carregadas
+
+settings = carregar_settings()
