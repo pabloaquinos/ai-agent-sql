@@ -18,6 +18,9 @@ class Settings(BaseSettings):
 
     agentcore_memory_id: str
 
+    cognito_user_pool_id: str
+    cognito_client_id: str
+
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
 def carregar_settings() -> Settings:
