@@ -20,3 +20,4 @@ langfuse==2.*
 bedrock-agentcore[strands-agents]==0.*
 fastapi==0.*
 uvicorn==0.*
+pyjwt[crypto]==2.*
